@@ -1,7 +1,7 @@
 const app = require('express')();
-
+require('dotenv').config()
 const server = require('http').createServer(app);
-
+const PORT = process.env.PORT || 5000
 const io = require('socket.io')(server, {
     cors: {
         origin: '*'
@@ -33,6 +33,6 @@ io.on('connection', (socket) => {
 //     })
 // })
 
-server.listen(5000, () => {
-    console.log("listening on port 5000")
+server.listen(PORT, () => {
+    console.log("listening on port ",PORT)
 })
